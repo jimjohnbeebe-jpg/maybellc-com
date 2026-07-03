@@ -57,3 +57,18 @@ by reading the media-query breakpoints directly instead, and defer
 real-device/breakpoint confirmation to Jim's browser-verification pass per
 `verification.md` (which is the authority for that anyway, not a
 self-driven browser check).
+
+## 2026-07-03 — Overdrive means discernible; verify on the user's real machine profile
+**Correction (Jim):** the first overdrive pass (PR #4) was "so subtle as
+to be invisible" — a ~1s load entrance nobody sees, 9px dot flashes, and a
+full reduced-motion bail-out that made the site fully static on any
+Windows box with "Animation effects" off (including Jim's own). Two
+lessons: (1) when a command's premise is *push past conventional limits*,
+transient or low-amplitude motion fails the brief regardless of craft —
+effects must be persistent (visible any second you look) or
+high-amplitude, and the "wow test" is the acceptance bar, not validation
+cleanliness. (2) A gating condition discovered during self-verify (the
+dev machine reporting `prefers-reduced-motion: reduce`) is a *product
+finding to surface immediately*, not a checklist footnote — it changed
+who could see the feature at all, and burying it cost a full
+build-verify-merge round trip.

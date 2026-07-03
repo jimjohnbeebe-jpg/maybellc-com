@@ -17,3 +17,6 @@ One line per closed decision. Full entries in `DECISIONS.md`.
 - 2026-07-03 — D-05 — Overdrive motion: boot sequence + venture dot sweep
   + hero work lamp (Jim's pick of 3 options); scroll-driven rail rejected
   for browser support. Progressive enhancement, reduced-motion bail-out.
+- 2026-07-03 — D-06 — Motion runs on every machine: no
+  prefers-reduced-motion bail-out (Windows performance presets pollute the
+  flag); PR #4's subtle pass replaced by PR #5's spectacular package.

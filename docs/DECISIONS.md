@@ -89,3 +89,23 @@ browser support (no Firefox without a flag).
 **Constraints honored:** progressive enhancement only (no-JS page
 unchanged), full `prefers-reduced-motion` bail-out in both JS and CSS,
 transform/opacity/mask-position only, self-stopping rAF loop.
+
+## D-06 — Motion runs on every machine; no prefers-reduced-motion bail-out (2026-07-03)
+**Context:** PR #4's overdrive motion honored `prefers-reduced-motion:
+reduce` by disabling all animation. Windows sets that flag whenever
+"Animation effects" is off — which performance presets and OEM tools do
+without the owner's knowledge (Jim's own machine had it set and he didn't
+know). Result: the entire motion pass was invisible to him and to an
+unknown slice of Windows visitors, and even with the flag off the motion
+was too transient/subtle to register.
+**Decision (Jim, explicit):** effects work on every machine, no settings
+dependence — the reduced-motion media query no longer gates any of the
+overdrive motion (only the smooth-scroll `scroll-behavior: auto` override
+remains). The PR #4 motion was replaced wholesale with the "All of it"
+spectacular package (terminal boot, living canvas hero, 3D frames + CRT
+power-ons, HUD rail) in PR #5.
+**Tradeoff acknowledged:** this deliberately does not serve
+vestibular-sensitive users who set the flag intentionally; accepted
+because the OS-flag signal is too polluted on Windows to distinguish
+intent, and the site's motion avoids large full-viewport parallax shifts
+tied to scroll.
