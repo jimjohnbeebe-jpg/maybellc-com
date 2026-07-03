@@ -1,0 +1,17 @@
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+desktop.ini
+
+# Local env (this site has none by default, but keep the guard)
+.env
+.env.local

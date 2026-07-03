@@ -1,0 +1,147 @@
+/* MaybeLLC.com — base styles.
+   Palette/spacing/typography are placeholders until the Claude Design
+   mockup is imported (see docs/DECISIONS.md D-01 and STATUS.md). */
+
+:root {
+  --color-bg: #0b0b0c;
+  --color-fg: #f5f5f5;
+  --color-accent: #4f8cff;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 4rem;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+.skip-link:focus {
+  left: var(--space-2);
+  top: var(--space-2);
+  background: var(--color-accent);
+  color: #fff;
+  padding: var(--space-1) var(--space-2);
+  z-index: 100;
+}
+
+.site-header {
+  padding: var(--space-2) var(--space-3);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.site-nav__brand {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.site-nav__links {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav__links a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-nav__links a:hover,
+.site-nav__links a:focus-visible {
+  text-decoration: underline;
+}
+
+main section {
+  padding: var(--space-4) var(--space-3);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  padding-top: var(--space-4);
+}
+
+.hero__tagline {
+  color: rgba(245, 245, 245, 0.75);
+  font-size: 1.125rem;
+}
+
+.portfolio__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+}
+
+.portfolio__item {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.portfolio__item h3,
+.portfolio__item p {
+  padding: 0 var(--space-2);
+}
+.portfolio__item h3 {
+  margin-top: var(--space-2);
+}
+.portfolio__item p {
+  margin-bottom: var(--space-2);
+}
+
+.site-footer {
+  text-align: center;
+  padding: var(--space-3);
+  color: rgba(245, 245, 245, 0.6);
+  font-size: 0.875rem;
+}
+
+.not-found {
+  text-align: center;
+  padding: var(--space-4) var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .site-nav__links {
+    gap: var(--space-2);
+  }
+  main section {
+    padding: var(--space-3) var(--space-2);
+  }
+}
