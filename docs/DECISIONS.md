@@ -43,3 +43,32 @@ build (mobile-first breakpoints; visible focus rings on every interactive
 element) since `architecture.md` requires both as baseline, not follow-up.
 Brand name corrected from the scaffold's placeholder "MaybeLLC" to "Maybe
 LLC" (two words) throughout, matching the actual design.
+
+## D-04 — Replaced DM Sans/IBM Plex Sans/IBM Plex Mono with Archivo/Public Sans/Fragment Mono (2026-07-03)
+**Context:** An `/impeccable critique` pass (dual-agent, score 31/40)
+flagged that all three shipped fonts are named verbatim on the `impeccable`
+skill's own `brand.md` reflex-reject list — training-data monoculture
+defaults that undercut the brand's stated "disciplined, rational,
+understated, not-generic-AI-tool" positioning. The bundled anti-slop
+detector didn't catch it (its CLI scan only parses the `<link>` tag in
+`index.html` and misses fonts declared via CSS custom properties in a
+separate file), but the brand-specific human review did.
+**Decision:** Ran `brand.md`'s font-selection procedure (three brand-voice
+words → physical-object reference → catalog browse → cross-check against
+the original reflex) and landed on Archivo (display/headline, an engineered
+grotesque), Public Sans (body, the US federal design system's deliberately
+unhyped typeface), and Fragment Mono (labels/data). Same weight scale and
+`clamp()` sizes carried over from `DESIGN.md` — only the family names
+changed.
+**Why:** Keeps the existing type scale/hierarchy (no redesign needed) while
+removing the single most identifiable "an AI generated this" tell on the
+page.
+**Also in this change (same `/impeccable` remediation pass):** added tag
+chips to Zephyrphoto/RescueRich so all three venture cards read as
+complete-but-tiered rather than two of three looking unfinished; bumped
+`.site-nav__links a` padding from `8px 10px` to `12px 12px` to clear the
+44px touch-target guideline; added a hero "See the ventures" CTA; added a
+mobile-visible inline "documentation verified" variant (the floating
+desktop badge previously vanished outright below 900px); added a
+visually-hidden "(opens in new tab)" cue to all 6 external links via a new
+`.sr-only` utility class.

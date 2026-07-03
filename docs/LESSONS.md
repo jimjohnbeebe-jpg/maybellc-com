@@ -42,3 +42,18 @@ later before concluding something's wrong. Also expect a brief HTTP-only
 window right after the DNS switches to GitHub's IPs but before GitHub's
 cert is issued — Cloudflare's cert was terminating HTTPS before, and
 nothing does until GitHub's own cert lands.
+
+## 2026-07-03 — `mcp__claude-in-chrome__resize_window` didn't change the rendered viewport this session
+Confirmed independently twice (once by an `/impeccable critique` Assessment
+B sub-agent, once directly): calling `resize_window` to 390×844 reported
+success, but every subsequent screenshot stayed at the original 1498×812
+window size — text line-breaks and layout were identical before and after.
+No error surfaced; the tool silently didn't take effect in this
+environment. For future sessions needing mobile/tablet visual
+verification on this machine: don't trust `resize_window` output at face
+value — take a screenshot immediately after and compare pixel dimensions
+before relying on it. If it's not actually resizing, verify responsive CSS
+by reading the media-query breakpoints directly instead, and defer
+real-device/breakpoint confirmation to Jim's browser-verification pass per
+`verification.md` (which is the authority for that anyway, not a
+self-driven browser check).
