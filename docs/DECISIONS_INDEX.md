@@ -5,3 +5,7 @@ One line per closed decision. Full entries in `DECISIONS.md`.
 - 2026-07-02 — D-01 — Static HTML/CSS/JS, no framework/build step.
 - 2026-07-02 — D-02 — GitHub Pages + custom domain (`CNAME`) as the default
   hosting target, pending Jim's DNS/Pages-enable confirmation.
+- 2026-07-03 — D-03 — Ported a focused subset of the design-system tokens
+  (not the full file) and translated the mockup's inline styles into BEM
+  classes; added mobile breakpoints and focus states the export lacked;
+  corrected brand text to "Maybe LLC".

@@ -1,38 +1,30 @@
 # STATUS
 
-**Last updated:** 2026-07-02
+**Last updated:** 2026-07-03
 
 ## Current state
-Repo scaffolded on `main`: folder structure, SEO-baseline `index.html`,
-`.claude/` discipline (adapted from AutoDocWeb for a build-free static site).
+The real "Maybe LLC Landing" mockup is imported and built out: `index.html`
+and `assets/css/styles.css` are a full rewrite — nav, hero, ventures
+(RepairVector/Zephyrphoto/RescueRich), about, and footer, with real copy and
+optimized brand/portfolio image assets. `site.webmanifest` and `404.html`
+brand text updated to match ("Maybe LLC"). Mobile-first breakpoints and
+`:focus-visible` states were added by hand — the source export had neither.
 
-A `content/mockup-import` branch exists locally and on GitHub
-(`853f993`), intended to bring in the "Maybe LLC Landing" Claude Design
-mockup. **It does not yet contain the mockup.** The commit only deletes two
-placeholder SVGs (`assets/images/favicon.svg`,
-`assets/images/portfolio/placeholder.svg`) — `index.html`,
-`assets/css/styles.css`, and every other file are still byte-identical to
-the original scaffold. The `/ultraplan` cloud session that generated the
-real implementation could not push (auth/permissions), and the follow-up
-manual import did not land the actual content — likely a partial
-`git add`/commit that only staged the two deletions.
-
-**No PR has been opened.** Opening one now would misrepresent "mockup
-import" as a two-file deletion — nothing here reflects the design yet.
+PR #1 (`content/mockup-import` → `main`) was opened, browser-verified by
+Jim, reviewed by CodeRabbit (lazy-loading + footer contrast fixed; Google
+Fonts self-hosting declined for a follow-up — see `TODO.md`), and merged.
 
 ## Next action
-Re-attempt the mockup import (either resume the `/ultraplan` cloud session
-after fixing its GitHub push permissions, or manually pull the design output
-again) and commit the actual `index.html`/CSS/asset changes on
-`content/mockup-import`. Once real content is on that branch, verify against
-`.claude/rules/verification.md` (HTML validates, no console errors, SEO
-`<head>` checklist) before requesting a PR.
+Enable GitHub Pages + point DNS at it (see `TODO.md` Hosting section), then
+revisit branch protection on `main` now that real content work has started.
 
 ## Open questions
 - Hosting: scaffolded for GitHub Pages + custom domain (`CNAME` =
   `maybellc.com`), but GitHub Pages is not yet enabled in repo settings and
   DNS is not yet pointed — confirm with Jim before relying on it.
-- Portfolio content (projects, images, copy) not yet supplied.
-- Why did the `/ultraplan` cloud session fail to push, and why did the
-  manual import only stage deletions? Worth a `docs/LESSONS.md` entry once
-  root-caused, to avoid repeating it.
+- Branch protection on `main` still deliberately off per `TODO.md` — revisit
+  now that real content work has started.
+- Why did the `/ultraplan` cloud session fail to push, and why did the first
+  manual-import attempt only stage two deletions? Root-caused as a Claude
+  Design "Send to Claude Code Web" limitation — see `docs/LESSONS.md`
+  (2026-07-03 entry).

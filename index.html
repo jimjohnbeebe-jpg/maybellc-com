@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MaybeLLC — Portfolio &amp; Projects</title>
-  <meta name="description" content="MaybeLLC is a small studio building focused digital products. Explore our portfolio of projects and get in touch.">
+  <title>Maybe LLC — Rational development, modern technology</title>
+  <meta name="description" content="Maybe LLC builds mission-focused solutions in software, AI, and automotive repair, and operates RepairVector, Zephyrphoto, and RescueRich.">
   <link rel="canonical" href="https://maybellc.com/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="MaybeLLC — Portfolio &amp; Projects">
-  <meta property="og:description" content="MaybeLLC is a small studio building focused digital products. Explore our portfolio of projects and get in touch.">
+  <meta property="og:title" content="Maybe LLC — Rational development, modern technology">
+  <meta property="og:description" content="Maybe LLC builds mission-focused solutions in software, AI, and automotive repair, and operates RepairVector, Zephyrphoto, and RescueRich.">
   <meta property="og:url" content="https://maybellc.com/">
   <meta property="og:image" content="https://maybellc.com/assets/images/og-cover.jpg">
-  <meta property="og:site_name" content="MaybeLLC">
+  <meta property="og:site_name" content="Maybe LLC">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MaybeLLC — Portfolio &amp; Projects">
-  <meta name="twitter:description" content="MaybeLLC is a small studio building focused digital products. Explore our portfolio of projects and get in touch.">
+  <meta name="twitter:title" content="Maybe LLC — Rational development, modern technology">
+  <meta name="twitter:description" content="Maybe LLC builds mission-focused solutions in software, AI, and automotive repair, and operates RepairVector, Zephyrphoto, and RescueRich.">
   <meta name="twitter:image" content="https://maybellc.com/assets/images/og-cover.jpg">
 
   <!-- Icons / manifest -->
   <link rel="icon" href="/assets/images/favicon.ico" sizes="any">
-  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0b0b0c">
+  <meta name="theme-color" content="#0b0f1a">
+
+  <!-- Fonts: Google Fonts CDN. If unreachable the page still reads fine —
+       every font-family declaration falls back to the system sans stack. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 
   <link rel="stylesheet" href="/assets/css/styles.css">
 
@@ -35,9 +40,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "MaybeLLC",
+    "name": "Maybe LLC",
     "url": "https://maybellc.com/",
-    "logo": "https://maybellc.com/assets/images/logo.png"
+    "logo": "https://maybellc.com/assets/images/logo.webp",
+    "email": "info@maybellc.com"
   }
   </script>
 </head>
@@ -46,46 +52,195 @@
 
   <header class="site-header">
     <nav class="site-nav" aria-label="Primary">
-      <a class="site-nav__brand" href="#top">MaybeLLC</a>
+      <a class="site-nav__brand" href="#top">
+        <img src="/assets/images/logo.webp" alt="" width="256" height="256">
+        Maybe&nbsp;LLC
+      </a>
       <ul class="site-nav__links">
+        <li><a href="#ventures">Ventures</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:info@maybellc.com">Get in touch</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
     <section id="top" class="hero">
-      <h1>MaybeLLC</h1>
-      <p class="hero__tagline"><!-- TODO(content): replace with real tagline — see TODO.md --> A small studio building focused digital products.</p>
+      <div class="hero__inner">
+        <h1 class="hero__title">The discipline of rational development. The strength of modern technology.</h1>
+        <p class="hero__lede">We build mission-focused solutions across software, AI, and automotive repair &mdash; and operate a small portfolio of ventures that put those principles to work.</p>
+      </div>
     </section>
 
-    <section id="about" class="about">
-      <h2>About</h2>
-      <p><!-- TODO(content): replace with real about copy — see TODO.md --> Placeholder about-section copy.</p>
-    </section>
+    <section id="ventures" class="section section--alt">
+      <div class="section__head">
+        <div class="eyebrow">The Portfolio</div>
+        <h2 class="section__title">Three ventures, one operating discipline.</h2>
+      </div>
 
-    <section id="portfolio" class="portfolio">
-      <h2>Portfolio</h2>
-      <ul class="portfolio__grid">
-        <!-- TODO(content): replace with real projects — see TODO.md -->
-        <li class="portfolio__item">
-          <img src="/assets/images/portfolio/placeholder.svg" alt="Project placeholder" width="400" height="300">
-          <h3>Project Name</h3>
-          <p>Short project description.</p>
+      <ul class="ventures__list">
+        <li>
+          <article class="venture venture--featured">
+            <div class="venture__content">
+              <div class="venture__meta">
+                <span class="venture__index">01</span>
+                <span class="venture__rule"></span>
+                <span class="venture__category">Automotive &middot; B2B SaaS</span>
+                <span class="venture__flag">Flagship</span>
+              </div>
+              <div class="venture__brand">
+                <img src="/assets/images/logo.webp" alt="" width="256" height="256">
+                <h3 class="venture__title">RepairVector</h3>
+              </div>
+              <p class="venture__desc">A B2B SaaS platform that streamlines diagnostic workflows for automotive repair shops &mdash; built around structured, accurate diagnostic documentation that a shop can trust and reuse.</p>
+              <ul class="venture__tags">
+                <li>Diagnostic Workflows</li>
+                <li>Structured Docs</li>
+                <li>Shop-ready</li>
+              </ul>
+              <a class="venture__link" href="https://repairvector.com" target="_blank" rel="noopener">
+                Visit RepairVector.com
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+            <div class="venture__preview">
+              <div class="venture__frame">
+                <div class="venture__browser-bar">
+                  <span class="venture__dot venture__dot--fault"></span>
+                  <span class="venture__dot venture__dot--signal"></span>
+                  <span class="venture__dot venture__dot--clear"></span>
+                  <span class="venture__url">repairvector.com</span>
+                </div>
+                <img src="/assets/images/portfolio/repairvector.webp" alt="RepairVector diagnostic platform" width="1400" height="1147" loading="lazy" decoding="async">
+              </div>
+              <div class="venture__badge">
+                <span class="venture__dot venture__dot--clear"></span>
+                &rsaquo; documentation verified
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <li>
+          <article class="venture venture--reversed">
+            <div class="venture__content">
+              <div class="venture__meta">
+                <span class="venture__index">02</span>
+                <span class="venture__rule"></span>
+                <span class="venture__category">Photography</span>
+              </div>
+              <h3 class="venture__title">Zephyrphoto</h3>
+              <p class="venture__desc">A curated collection of personal photography on a hand-made platform built to house the portfolio &mdash; landscapes, coastlines, and the quiet in between. The craft of software applied to the craft of the image.</p>
+              <a class="venture__link" href="https://zephyrphoto.com" target="_blank" rel="noopener">
+                Visit Zephyrphoto.com
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+            <div class="venture__preview">
+              <div class="venture__frame">
+                <div class="venture__browser-bar">
+                  <span class="venture__dot venture__dot--fault"></span>
+                  <span class="venture__dot venture__dot--signal"></span>
+                  <span class="venture__dot venture__dot--clear"></span>
+                  <span class="venture__url">zephyrphoto.com</span>
+                </div>
+                <img src="/assets/images/portfolio/zephyr.webp" alt="Zephyr Photography portfolio" width="1400" height="1154" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <li>
+          <article class="venture">
+            <div class="venture__content">
+              <div class="venture__meta">
+                <span class="venture__index">03</span>
+                <span class="venture__rule"></span>
+                <span class="venture__category">Small-business Web</span>
+              </div>
+              <h3 class="venture__title">RescueRich</h3>
+              <p class="venture__desc">A single-page, highly optimized website for a small business. It costs very little to build and almost nothing to host &mdash; yet it conveys a clear mission and message. Proof that lean, disciplined web work still wins.</p>
+              <a class="venture__link" href="https://rescuerich.com" target="_blank" rel="noopener">
+                Visit RescueRich.com
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+            <div class="venture__preview">
+              <div class="venture__frame">
+                <div class="venture__browser-bar">
+                  <span class="venture__dot venture__dot--fault"></span>
+                  <span class="venture__dot venture__dot--signal"></span>
+                  <span class="venture__dot venture__dot--clear"></span>
+                  <span class="venture__url">rescuerich.com</span>
+                </div>
+                <img src="/assets/images/portfolio/rescuerich.webp" alt="Rescue Rich's Roadside Assistance" width="1400" height="936" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </article>
         </li>
       </ul>
     </section>
 
-    <section id="contact" class="contact">
-      <h2>Contact</h2>
-      <p><!-- TODO(content): replace with real contact details — see TODO.md --> Placeholder contact copy.</p>
+    <section id="about" class="section">
+      <div class="about__intro">
+        <div class="eyebrow">About Maybe LLC</div>
+        <h2 class="about__statement">Maybe LLC brings the discipline of rational development and the strength of modern technology together to build mission-focused solutions &mdash; in software, in AI, and on the shop floor.</h2>
+      </div>
+      <ul class="about__pillars">
+        <li class="about__pillar">
+          <div class="about__pillar-index">01</div>
+          <h3>Rational development</h3>
+          <p>Decisions made on evidence, not hype. Ship what holds up under real use.</p>
+        </li>
+        <li class="about__pillar">
+          <div class="about__pillar-index">02</div>
+          <h3>Modern technology</h3>
+          <p>AI and current tooling, used where they earn their keep &mdash; not for their own sake.</p>
+        </li>
+        <li class="about__pillar">
+          <div class="about__pillar-index">03</div>
+          <h3>Mission focus</h3>
+          <p>Every venture solves a real, defined problem for a real customer.</p>
+        </li>
+      </ul>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year">2026</span> MaybeLLC. All rights reserved.</p>
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div>
+          <div class="site-footer__brand">
+            <img src="/assets/images/logo.webp" alt="" width="256" height="256">
+            Maybe&nbsp;LLC
+          </div>
+          <p class="site-footer__tagline">Rational development, modern technology, mission-focused solutions.</p>
+        </div>
+        <nav aria-label="Ventures">
+          <div class="site-footer__label">Ventures</div>
+          <ul class="site-footer__links">
+            <li><a href="https://repairvector.com" target="_blank" rel="noopener">RepairVector.com</a></li>
+            <li><a href="https://zephyrphoto.com" target="_blank" rel="noopener">Zephyrphoto.com</a></li>
+            <li><a href="https://rescuerich.com" target="_blank" rel="noopener">RescueRich.com</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__contact">
+          <div class="site-footer__label">Contact</div>
+          <a href="mailto:info@maybellc.com">info@maybellc.com</a>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span class="site-footer__copyright">&copy; <span id="year">2026</span> Maybe LLC &middot; All rights reserved.</span>
+        <div class="site-footer__veteran">
+          <span class="site-footer__veteran-label">Proudly veteran owned</span>
+          <div class="site-footer__badges">
+            <img src="/assets/images/veteran/usmc.webp" alt="United States Marine Corps" title="U.S. Marine Corps — Veteran Owned" width="287" height="300">
+            <span class="site-footer__badge-divider"></span>
+            <img src="/assets/images/veteran/usaf.webp" alt="United States Air Force" title="U.S. Air Force — Veteran Owned" width="357" height="300">
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="/assets/js/main.js" defer></script>
