@@ -13,6 +13,10 @@
   <meta property="og:description" content="Maybe LLC builds mission-focused solutions in software, AI, and automotive repair, and operates RepairVector, Zephyrphoto, and RescueRich.">
   <meta property="og:url" content="https://maybellc.com/">
   <meta property="og:image" content="https://maybellc.com/assets/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Maybe LLC — rational development, modern technology">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Maybe LLC">
 
   <!-- Twitter Card -->
@@ -26,12 +30,13 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0b0f1a">
+  <meta name="color-scheme" content="dark">
 
-  <!-- Fonts: Google Fonts CDN. If unreachable the page still reads fine —
-       every font-family declaration falls back to the system sans stack. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600&amp;family=Fragment+Mono&amp;display=swap">
+  <!-- Fonts are self-hosted (see assets/fonts/); every font-family
+       declaration falls back to the system stack if they fail to load. -->
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/public-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/fragment-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="/assets/css/styles.css">
 
@@ -41,6 +46,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Maybe LLC",
+    "description": "Maybe LLC builds mission-focused solutions in software, AI, and automotive repair, and operates RepairVector, Zephyrphoto, and RescueRich.",
     "url": "https://maybellc.com/",
     "logo": "https://maybellc.com/assets/images/logo.webp",
     "email": "info@maybellc.com"
@@ -232,7 +238,7 @@
       <div class="site-footer__grid">
         <div>
           <div class="site-footer__brand">
-            <img src="/assets/images/logo.webp" alt="" width="256" height="256">
+            <img src="/assets/images/logo.webp" alt="" width="256" height="256" loading="lazy" decoding="async">
             Maybe&nbsp;LLC
           </div>
           <p class="site-footer__tagline">Rational development, modern technology, mission-focused solutions.</p>
@@ -255,9 +261,9 @@
         <div class="site-footer__veteran">
           <span class="site-footer__veteran-label">Proudly veteran owned</span>
           <div class="site-footer__badges">
-            <img src="/assets/images/veteran/usmc.webp" alt="United States Marine Corps" title="U.S. Marine Corps — Veteran Owned" width="287" height="300">
+            <img src="/assets/images/veteran/usmc.webp" alt="United States Marine Corps" title="U.S. Marine Corps — Veteran Owned" width="287" height="300" loading="lazy" decoding="async">
             <span class="site-footer__badge-divider"></span>
-            <img src="/assets/images/veteran/usaf.webp" alt="United States Air Force" title="U.S. Air Force — Veteran Owned" width="357" height="300">
+            <img src="/assets/images/veteran/usaf.webp" alt="United States Air Force" title="U.S. Air Force — Veteran Owned" width="357" height="300" loading="lazy" decoding="async">
           </div>
         </div>
       </div>

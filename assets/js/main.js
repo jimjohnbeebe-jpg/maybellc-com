@@ -1,12 +1,12 @@
-// Progressive enhancement only — content and navigation must work with this
-// disabled. See .claude/rules/conventions.md.
+// Maybe LLC — maybellc.com
 //
-// Overdrive pass ("The Living Garage"). Everything here is additive: the
-// boot overlay, hero canvas scene, HUD rail, brackets, and scanline layers
-// are all injected by this script, so the no-JS page renders the plain
-// static site. Per D-06, motion runs on every machine — there is no
-// prefers-reduced-motion bail-out (Jim's explicit call: the OS flag is too
-// often set by Windows performance presets to gate the whole experience).
+// Progressive enhancement only: content and navigation work with scripting
+// disabled. Everything here is additive — the boot overlay, hero canvas
+// scene, HUD rail, brackets, and scanline layers are all injected by this
+// script, so the no-JS page renders the plain static site. Motion runs
+// unconditionally: the reduced-motion OS flag is set by Windows
+// performance presets on machines whose owners never chose it, so it is
+// not used as a gate here.
 
 (function () {
   "use strict";
