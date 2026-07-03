@@ -60,13 +60,23 @@ page) and too subtle even when enabled. Jim's directive: effects must be
 discernible on every machine, no settings dependence, spectacular not
 restrained. See `docs/LESSONS.md` (2026-07-03) and D-06.
 
-PR #5 (`feat/overdrive-spectacular` → `main`) is **open, awaiting Jim's
-browser verification**. Full replacement of the PR #4 motion ("All of it"
-direction, Jim's pick): once-per-session terminal boot takeover, persistent
-"Living Garage" canvas hero (parallax grid drift, 7s scan-beam, dust
-motes, cursor lamp), 3D tilt + glare + CRT power-on + persistent corner
-brackets on venture frames, right-edge HUD scroll telemetry. No
-reduced-motion bail-out (D-06). CSS/JS only; no-JS page unchanged.
+PR #5 (`feat/overdrive-spectacular` → `main`) was **merged by Jim
+2026-07-03 ~13:47 UTC** at commit `4a4d065` (CodeRabbit triage). Full
+replacement of the PR #4 motion ("All of it" direction, Jim's pick):
+once-per-session terminal boot takeover, persistent "Living Garage"
+canvas hero (parallax grid drift, 14s scan-beam, cursor lamp), 3D tilt +
+glare + CRT power-on + persistent corner brackets on venture frames,
+right-edge HUD scroll telemetry. No reduced-motion bail-out (D-06).
+CSS/JS only; no-JS page unchanged.
+
+**Merge/deploy incident (2026-07-03):** the merge's Pages deploy failed
+with a transient GitHub-side error ("Deployment failed, try again
+later"), leaving the live site serving the stale PR #4 build — which is
+static on machines with the Windows reduced-motion flag, so it looked
+like "all effects broke." Re-run triggered. Separately, the merge landed
+while two just-pushed commits (`f206b57` launch-quality pass, `5989260`
+docs) were on the branch — they missed the merge and were re-raised as a
+follow-up PR (same branch, new PR) for Jim to merge.
 Self-verified (gate 1): boot/scene/tilt/power-ons/HUD confirmed in
 Chrome, zero console errors; a tab-throttling bug in the boot typing was
 found and fixed (time-based typing + hard cap) during iteration.
