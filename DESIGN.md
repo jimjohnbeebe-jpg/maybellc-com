@@ -348,3 +348,43 @@ RescueRich) has nothing to do with automotive repair.
 - **Don't** use `border-left`/`border-right` as a colored accent stripe on
   any card, list item, or callout — full borders, fills, or the existing
   leading-index-number pattern instead.
+
+## 7. Motion (added 2026-07-03, PR #5 — "The Living Garage")
+
+The page is no longer static: motion is part of the diagnostic-instrument
+identity, and per **D-06** it runs on every machine — there is **no
+`prefers-reduced-motion` bail-out** (the Windows performance preset
+pollutes that flag; only the smooth-scroll override remains gated). All
+motion chrome is injected by `assets/js/main.js`; the no-JS page stays
+fully static.
+
+### Vocabulary
+- **Terminal boot takeover** (once per tab session, `sessionStorage`):
+  full-screen mono self-test types out in under 2s, then a clip-path wipe
+  reveals the page. Any key or click skips it.
+- **Living Garage hero scene** (canvas, replaces the static CSS grid when
+  JS runs): three parallax blueprint grid layers drifting, a torque-blue
+  scan-beam sweeping every ~14s at low intensity, and a cursor lamp on
+  fine pointers. Pauses off-screen and on hidden tabs.
+- **CRT power-on** (once per frame, on scroll-into-view): the venture
+  screenshot snaps on like a monitor, scanlines fade, status dots run
+  fault → signal → clear, corner brackets draw in **and persist** as
+  diagnostic chrome, badge stamps in.
+- **3D tilt + glare** (fine pointers): frames rotate up to ~6–8° toward
+  the cursor with a glare streak (`--glare-x`/`--glare-o`).
+- **HUD scan rail** (≥900px): fixed right-edge scroll telemetry — mono
+  section label + percent.
+
+### Named rules
+- **The Ease Rule.** `cubic-bezier(0.22, 1, 0.36, 1)` (ease-out-quint) is
+  the house curve. No bounce, no elastic.
+- **The Once Rule.** One-shot moments (boot, power-ons) fire exactly once
+  per session/entry; ambient motion (scene, HUD) is the only motion that
+  loops.
+- **The Injection Rule.** Motion chrome (`.boot`, `.hud`,
+  `.frame-bracket`, `.crt-lines`, `.hero__scene`) exists only when JS
+  creates it — never in `index.html`.
+
+### Z-index scale
+`nav 50 → hud 60 → boot 90 → skip-link 100`. New layers slot into this
+scale; no arbitrary values.

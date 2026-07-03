@@ -270,9 +270,9 @@
         ctx.fillStyle = g;
         ctx.fillRect(beamX - half, 0, half * 2, h);
         var core = ctx.createLinearGradient(beamX - 6, 0, beamX + 6, 0);
-        core.addColorStop(0, "rgba(147, 197, 253, 0)");
-        core.addColorStop(0.5, "rgba(147, 197, 253, 0.11)");
-        core.addColorStop(1, "rgba(147, 197, 253, 0)");
+        core.addColorStop(0, "rgba(96, 165, 250, 0)");
+        core.addColorStop(0.5, "rgba(96, 165, 250, 0.11)");
+        core.addColorStop(1, "rgba(96, 165, 250, 0)");
         ctx.fillStyle = core;
         ctx.fillRect(beamX - 6, 0, 12, h);
       }
@@ -327,16 +327,16 @@
     document.querySelectorAll(".venture__preview").forEach(function (preview) {
       var frameEl = preview.querySelector(".venture__frame");
       if (!frameEl) return;
-      var rx = 0, ry = 0, trx = 0, try_ = 0;
+      var rx = 0, ry = 0, targetRX = 0, targetRY = 0;
       var rafId = null;
 
       function step() {
-        rx += (trx - rx) * 0.14;
-        ry += (try_ - ry) * 0.14;
+        rx += (targetRX - rx) * 0.14;
+        ry += (targetRY - ry) * 0.14;
         frameEl.style.transform =
           "perspective(1100px) rotateX(" + rx.toFixed(3) + "deg) rotateY(" + ry.toFixed(3) + "deg)";
-        if (Math.abs(trx - rx) < 0.01 && Math.abs(try_ - ry) < 0.01) {
-          if (trx === 0 && try_ === 0) frameEl.style.transform = "";
+        if (Math.abs(targetRX - rx) < 0.01 && Math.abs(targetRY - ry) < 0.01) {
+          if (targetRX === 0 && targetRY === 0) frameEl.style.transform = "";
           rafId = null;
           return;
         }
@@ -350,15 +350,15 @@
         var rect = frameEl.getBoundingClientRect();
         var nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
         var ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
-        trx = -ny * 6;
-        try_ = nx * 8;
+        targetRX = -ny * 6;
+        targetRY = nx * 8;
         frameEl.style.setProperty("--glare-x", (nx * 120).toFixed(1) + "%");
         frameEl.style.setProperty("--glare-o", "1");
         go();
       });
       preview.addEventListener("pointerleave", function () {
-        trx = 0;
-        try_ = 0;
+        targetRX = 0;
+        targetRY = 0;
         frameEl.style.setProperty("--glare-o", "0");
         go();
       });
@@ -503,11 +503,14 @@
 
   /* ===== ignition ===== */
 
+  // powerOns arms inside the boot callback: on short viewports the first
+  // frame can cross the observer threshold while the overlay still covers
+  // the page, which would burn its one-shot CRT power-on invisibly.
   runBoot(function (played) {
     heroScene();
     if (played) heroEntrance();
+    powerOns();
   });
   frameTilt();
-  powerOns();
   hud();
 })();
