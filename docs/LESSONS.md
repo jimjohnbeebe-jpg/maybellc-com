@@ -72,3 +72,18 @@ dev machine reporting `prefers-reduced-motion: reduce`) is a *product
 finding to surface immediately*, not a checklist footnote — it changed
 who could see the feature at all, and burying it cost a full
 build-verify-merge round trip.
+
+## 2026-07-03 — A failed Pages deploy is silent; never re-run this workflow, dispatch it
+PR #5's merge deploy failed with a transient GitHub-side error
+("Deployment failed, try again later"). Two lessons. (1) **A failed
+deploy is invisible from the browser** — GitHub Pages keeps serving the
+previous build, so the site looks "broken" in whatever way the stale
+build differs (here: the old reduced-motion-gated build read as "all
+effects dead"). After every merge, confirm the Actions run went green
+before judging the live site. (2) **Re-running the failed job can never
+fix it** in this repo's single-job workflow: the re-run re-executes the
+upload step, creating a second `github-pages` artifact in the same run,
+and `actions/deploy-pages` hard-fails on the ambiguity. The correct
+recovery is a fresh `workflow_dispatch` run (Actions tab → Run
+workflow), which builds one clean artifact. Documented in README.md's
+Deployment section.

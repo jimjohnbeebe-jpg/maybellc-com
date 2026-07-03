@@ -53,3 +53,9 @@ Tracks placeholder content/assets shipped in the initial scaffold, per the
       only weights actually used), `@font-face` with `font-display:
       swap`, preloads in `index.html`, OFL 1.1 license text included
       (`assets/fonts/OFL.txt`). No third-party connections remain.
+
+## Deploy observability
+- [ ] Consider a deploy-failure notification (e.g. a GitHub Actions
+      failure email/Slack notification, or a lightweight uptime/content
+      check) — 2026-07-03 showed a failed Pages deploy is silent and the
+      site quietly serves the stale build (see docs/LESSONS.md).
