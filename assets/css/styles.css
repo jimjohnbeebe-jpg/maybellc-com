@@ -177,29 +177,21 @@ a {
   background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: 48px 48px;
-  /* --lamp-x/y are driven by main.js (the "work lamp"); the fallbacks keep
-     the exact pre-enhancement mask when JS is off. */
-  -webkit-mask-image: radial-gradient(circle at var(--lamp-x, 42%) var(--lamp-y, 42%), #000 0%, transparent 72%);
-  mask-image: radial-gradient(circle at var(--lamp-x, 42%) var(--lamp-y, 42%), #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 42% 42%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 42% 42%, #000 0%, transparent 72%);
 }
 
-/* Lagging torque-blue glow that trails the work lamp. Hidden until JS
-   activates the lamp, so the no-JS hero is unchanged. */
-.hero::after {
-  content: "";
+/* The live canvas scene (main.js) replaces the static CSS grid when it
+   boots; without JS the ::before grid above is the fallback. */
+.hero--live::before {
+  display: none;
+}
+.hero__scene {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    460px 340px at var(--glow-x, 42%) var(--glow-y, 42%),
-    rgba(37, 99, 235, 0.13),
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 600ms ease;
-}
-.hero--lamp-on::after {
-  opacity: 1;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hero__inner {
@@ -401,13 +393,84 @@ a {
 
 .venture__preview {
   position: relative;
+  /* Depth stage for the 3D tilt main.js applies to the frame. */
+  perspective: 1100px;
 }
 
 .venture__frame {
+  position: relative;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--garage-900);
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform-style: preserve-3d;
+}
+
+/* Glare streak that slides across the frame glass while tilting.
+   Driven by --glare-x / --glare-o from main.js; inert without JS. */
+.venture__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.09) 50%,
+    transparent 58%
+  );
+  transform: translateX(var(--glare-x, -120%));
+  opacity: var(--glare-o, 0);
+}
+
+/* Diagnostic corner brackets main.js draws onto each frame when it
+   powers on. Injected by JS only — absent without it. */
+.frame-bracket {
+  position: absolute;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--torque-400);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.frame-bracket--tl {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+.frame-bracket--tr {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+.frame-bracket--bl {
+  bottom: 8px;
+  left: 8px;
+  border-right: none;
+  border-top: none;
+}
+.frame-bracket--br {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+/* CRT scanline overlay main.js injects during a frame's power-on. */
+.crt-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    rgba(0, 0, 0, 0.32) 2px 4px
+  );
 }
 
 .venture__browser-bar {
@@ -451,16 +514,6 @@ a {
   display: none;
 }
 
-/* Self-test sweep pre-state. .is-pending is applied by main.js only (and
-   only when motion is allowed), so dots and badge stay fully visible
-   without JS. The Web Animations API sweep lights the dots fault -> signal
-   -> clear, then stamps the badge in. */
-.venture__preview.is-pending .venture__browser-bar .venture__dot {
-  opacity: 0.2;
-}
-.venture__preview.is-pending .venture__badge {
-  opacity: 0;
-}
 
 .venture__verified-inline {
   display: inline-flex;
@@ -654,33 +707,118 @@ a {
   background: var(--border-on-dark);
 }
 
-/* ===== motion (progressive enhancement — all of it is gated on classes
-   that only main.js adds, so the no-JS page is fully static and visible) ===== */
+/* ===== overdrive chrome (all elements below are injected by main.js;
+   the no-JS page never renders them) ===== */
 
-/* Boot sequence: the hero's blueprint grid fades up like a shop light
-   warming on. .js-boot is added by main.js only when motion is allowed. */
-.js-boot .hero::before {
-  animation: hero-grid-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+/* Terminal boot takeover: a once-per-session diagnostic self-test that
+   types out, then wipes up to reveal the page. */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 90; /* nav 50 < hud 60 < boot 90 < skip-link 100 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--garage-950);
 }
 
-@keyframes hero-grid-in {
-  from {
+.boot__log {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  color: var(--panel-300);
+  min-width: min(430px, 84vw);
+}
+
+.boot__line {
+  white-space: pre;
+  min-height: 2em;
+}
+
+.boot__head {
+  color: var(--torque-400);
+}
+
+.boot__ok {
+  color: var(--clear-500);
+}
+
+.boot__cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--torque-400);
+  animation: boot-blink 800ms steps(1) infinite;
+}
+
+@keyframes boot-blink {
+  50% {
     opacity: 0;
   }
+}
+
+.boot--out {
+  animation: boot-out 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes boot-out {
   to {
-    opacity: 1;
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* HUD scan rail: fixed right-edge scroll telemetry (section + percent). */
+.hud {
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.hud__track {
+  position: relative;
+  width: 2px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hud__thumb {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 4px;
+  height: 26px;
+  background: var(--torque-400);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.8);
+}
+
+.hud__label {
+  writing-mode: vertical-rl;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--panel-400);
+}
+
+@media (min-width: 900px) {
+  .hud {
+    display: flex;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .js-boot .hero::before {
-    animation: none;
-  }
-  .hero::after {
-    transition: none;
   }
 }
 
