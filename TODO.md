@@ -37,3 +37,13 @@ Tracks placeholder content/assets shipped in the initial scaffold, per the
       content work starts — deliberately skipped at bootstrap since the repo
       was still empty scaffolding. `.claude/rules/git-workflow.md` assumes
       this is on; it isn't yet.
+
+## Performance / privacy
+- [ ] Self-host the three Google Fonts (DM Sans, IBM Plex Sans, IBM Plex
+      Mono) instead of loading from `fonts.googleapis.com`/`fonts.gstatic.com`
+      (`index.html`). Flagged by CodeRabbit on PR #1 — loading from Google's
+      CDN sends visitor IPs to Google, a privacy/compliance consideration for
+      EU traffic. Declined in PR #1's fix-pass as out of scope for a
+      review-comment cleanup (needs font files fetched + licensed + hosted
+      under `assets/fonts/`, plus `@font-face` rules) — do as its own
+      `chore:` branch.
