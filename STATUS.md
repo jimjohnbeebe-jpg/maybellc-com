@@ -69,36 +69,42 @@ glare + CRT power-on + persistent corner brackets on venture frames,
 right-edge HUD scroll telemetry. No reduced-motion bail-out (D-06).
 CSS/JS only; no-JS page unchanged.
 
-**Merge/deploy incident (2026-07-03):** the merge's Pages deploy failed
-with a transient GitHub-side error ("Deployment failed, try again
-later"), leaving the live site serving the stale PR #4 build — which is
-static on machines with the Windows reduced-motion flag, so it looked
-like "all effects broke." Re-run triggered. Separately, the merge landed
-while two just-pushed commits (`f206b57` launch-quality pass, `5989260`
-docs) were on the branch — they missed the merge and were re-raised as a
-follow-up PR (same branch, new PR) for Jim to merge.
-Self-verified (gate 1): boot/scene/tilt/power-ons/HUD confirmed in
-Chrome, zero console errors; a tab-throttling bug in the boot typing was
-found and fixed (time-based typing + hard cap) during iteration.
+PR #5 carried, beyond the motion rewrite: a tuning pass (sub-2s boot, 50%
+subtler grid, motes removed, beam 14s/half-bright — Jim's review), an
+`/impeccable polish` pass (power-on armed post-boot, beam core
+palette-aligned, DESIGN.md §7 Motion added), and CodeRabbit triage
+(2 findings: canvas pointer-events, wipe/removal desync — both fixed,
+replies on threads).
 
-The same PR also carries: a tuning pass (sub-2s boot, 50% subtler grid,
-motes removed, beam 14s/half-bright — Jim's review), an `/impeccable
-polish` pass (power-on armed post-boot, beam core palette-aligned,
-DESIGN.md §7 Motion added), CodeRabbit triage (2 findings: canvas
-pointer-events, wipe/removal desync — both fixed, replies on threads),
-and a launch-quality pass: **fonts self-hosted** (latin woff2 under
-`assets/fonts/`, OFL.txt, preloads; zero third-party requests now —
-TODO.md item closed), tooling references scrubbed from all served files,
-`color-scheme` meta, og:image dimensions/alt, JSON-LD description.
-W3C Nu: 0 errors/0 warnings. All 5 font faces verified loading
-first-party in ~10ms.
+**Merge/deploy incident (2026-07-03, resolved):** PR #5's Pages deploy
+failed with a transient GitHub-side error, leaving the live site serving
+the stale PR #4 build — static on machines with the Windows
+reduced-motion flag, so it looked like "all effects broke." A job re-run
+also fails structurally (duplicate `github-pages` artifact in the
+single-job workflow); a fresh `workflow_dispatch` run deployed cleanly.
+See `docs/LESSONS.md` (2026-07-03, deploy entry). The merge also landed
+while two just-pushed commits were on the branch; they were re-raised as
+PR #6.
+
+PR #6 (`feat/overdrive-spectacular` → `main`, launch-quality pass) was
+**merged by Jim 2026-07-03 ~14:18 UTC and deployed successfully**: fonts
+self-hosted (latin woff2 under `assets/fonts/`, OFL.txt, preloads; zero
+third-party requests — TODO.md item closed), tooling references scrubbed
+from all served files, `color-scheme` meta, og:image dimensions/alt,
+JSON-LD description. W3C Nu: 0 errors/0 warnings. Verified live:
+maybellc.com serves the full build, fonts 200 from first-party,
+**Jim browser-tested and passed the site**.
+
+## Project state: COMPLETE (dormant)
+The site is live, verified, and feature-complete as of 2026-07-03. Jim
+closed the project "for now — will re-open if needed." Deployment
+platform and process are documented in `README.md` (Deployment section).
 
 ## Next action
-Jim: browser-verify PR #5 against its test checklist, then merge. Also
-still pending from last session: confirm HTTP→HTTPS redirect is active
-(`curl -I http://maybellc.com/` should return a `301` to `https://`), and
-revisit branch protection on `main` now that real content work has landed
-(see `TODO.md` Repo settings).
+None — project dormant. If re-opened, run the session-start sequence
+(STATUS → rules → DECISIONS_INDEX) as usual; the leftover niceties live
+in `TODO.md` (branch protection revisit, HTTP→HTTPS redirect spot-check,
+deploy-failure notification idea).
 
 ## Open questions
 - Branch protection on `main` still deliberately off per `TODO.md` — revisit
