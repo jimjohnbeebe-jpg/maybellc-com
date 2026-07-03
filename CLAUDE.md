@@ -61,11 +61,21 @@ Actively look for structural wins. If you see an opportunity to replace a tactic
 - **conventions** — code style, comms, HTML/CSS/JS discipline.
 
 Not carried over from prior projects (deliberately — re-add only if this
-project grows to need them): a design-token/theme rule file (no design
-system exists yet — the Claude Design mockup will inform one once linked), a
+project grows to need them): a design-token/theme rule file (tokens live in
+`assets/css/styles.css` and are now documented in `DESIGN.md` — see Design
+Context below; a separate rule file isn't warranted for one stylesheet), a
 code-graph rule file (graphify; a single-page static site doesn't warrant a
 knowledge graph), and a customer-facing feedback-comment rule (no in-app
 feedback pipeline here).
+
+## Design Context
+
+`PRODUCT.md` (register, users, brand personality, anti-references) and
+`DESIGN.md` (colors, typography, components — Creative North Star: "The
+Night Shift") capture the strategic and visual system, generated via
+`/impeccable init` + `/impeccable document`. Read them before any
+design-touching task; they're the source of truth for brand personality
+and visual tokens, not this file.
 
 ## The hard gates (non-negotiable — detail in the rule files)
 - You **do not merge**. `main` is branch-protected. Jim merges after

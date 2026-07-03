@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-03T00:00:00Z",
+  "title": "Design System: Maybe LLC",
+  "extensions": {
+    "colorMeta": {
+      "garage-deepest": { "role": "neutral", "displayName": "Garage Deepest", "canonical": "#07090f", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "garage-body": { "role": "neutral", "displayName": "Garage Body", "canonical": "#0b0f1a", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "garage-panel": { "role": "neutral", "displayName": "Garage Panel", "canonical": "#111827", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "torque-primary": { "role": "primary", "displayName": "Torque Blue", "canonical": "#2563eb", "tonalRamp": ["#0d1b40", "#132a63", "#1d3f94", "#2563eb", "#3b76ef", "#60a5fa", "#93c5fd", "#dbeafe"] },
+      "torque-accent": { "role": "primary", "displayName": "Torque Blue Light", "canonical": "#60a5fa", "tonalRamp": ["#0d1b40", "#132a63", "#1d3f94", "#2563eb", "#3b76ef", "#60a5fa", "#93c5fd", "#dbeafe"] },
+      "signal-amber": { "role": "tertiary", "displayName": "Signal Amber", "canonical": "#f59e0b", "tonalRamp": ["#451a03", "#78350f", "#b45309", "#d97706", "#f59e0b", "#fbbf24", "#fcd34d", "#fef3c7"] },
+      "fault-red": { "role": "tertiary", "displayName": "Fault Red", "canonical": "#ef4444", "tonalRamp": ["#450a0a", "#7f1d1d", "#991b1b", "#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fee2e2"] },
+      "clear-green": { "role": "tertiary", "displayName": "Clear Green", "canonical": "#22c55e", "tonalRamp": ["#052e16", "#14532d", "#166534", "#16a34a", "#22c55e", "#4ade80", "#86efac", "#dcfce7"] },
+      "ink-primary": { "role": "neutral", "displayName": "Panel Slate", "canonical": "#cbd5e1", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "ink-muted": { "role": "neutral", "displayName": "Panel Slate Muted", "canonical": "#94a3b8", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "ink-faint": { "role": "neutral", "displayName": "Panel Slate Faint", "canonical": "#64748b", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "ink-inverse": { "role": "neutral", "displayName": "Panel White", "canonical": "#ffffff", "tonalRamp": ["#07090f", "#0b0f1a", "#111827", "#1e293b", "#334155", "#64748b", "#cbd5e1", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles and venture titles." },
+      "title": { "displayName": "Title", "purpose": "About statement and pillar headings." },
+      "body": { "displayName": "Body", "purpose": "Hero lede, venture descriptions, pillar copy." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow, category tags, index numbers, footer labels." }
+    },
+    "shadows": [
+      { "name": "frame-lift", "value": "0 30px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)", "purpose": "Lifts the venture preview frame off the dark background." },
+      { "name": "badge-float", "value": "0 12px 30px rgba(0,0,0,0.4)", "purpose": "The verification badge floating over the preview frame's corner, paired with backdrop-filter: blur(8px)." }
+    ],
+    "motion": [
+      { "name": "color-transition", "value": "150ms ease", "purpose": "Nav link and venture link color/background shifts on hover and focus." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Venture Link",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Inline text CTA with trailing chevron; the only call-to-action pattern in the system.",
+      "html": "<a class=\"ds-venture-link\" href=\"#\">Visit Example.com<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-venture-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; transition: color 150ms; } .ds-venture-link:hover, .ds-venture-link:focus-visible { color: #60a5fa; } .ds-venture-link svg { flex-shrink: 0; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header navigation item, muted at rest, tinted on hover/focus.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Ventures</a>",
+      "css": ".ds-nav-link { display: inline-block; font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 13px; color: #94a3b8; padding: 12px 12px; border-radius: 5px; text-decoration: none; transition: color 150ms, background 150ms; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #ffffff; background: rgba(255,255,255,0.06); }"
+    },
+    {
+      "name": "Tag Chip (Featured)",
+      "kind": "chip",
+      "refersTo": "tag-chip-featured",
+      "description": "Pill-shaped mono label; the featured variant marks the flagship venture's first tag.",
+      "html": "<span class=\"ds-tag-chip-featured\">Diagnostic Workflows</span>",
+      "css": ".ds-tag-chip-featured { display: inline-block; font-family: 'Fragment Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #60a5fa; background: rgba(37,99,235,0.14); padding: 5px 11px; border-radius: 9999px; }"
+    },
+    {
+      "name": "Flag Badge",
+      "kind": "chip",
+      "refersTo": "flag-badge",
+      "description": "Standalone 'Flagship' marker in a venture's meta row.",
+      "html": "<span class=\"ds-flag-badge\">Flagship</span>",
+      "css": ".ds-flag-badge { display: inline-block; font-family: 'Fragment Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #60a5fa; background: rgba(37,99,235,0.16); padding: 3px 9px; border-radius: 9999px; }"
+    },
+    {
+      "name": "Pillar Card",
+      "kind": "card",
+      "refersTo": "pillar-card",
+      "description": "Flat, bordered container for each About-section principle.",
+      "html": "<div class=\"ds-pillar-card\"><div class=\"ds-pillar-index\">01</div><h3>Rational development</h3><p>Decisions made on evidence, not hype.</p></div>",
+      "css": ".ds-pillar-card { padding: 1.5rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); } .ds-pillar-index { font-family: 'Fragment Mono', monospace; font-size: 11px; color: #60a5fa; margin-bottom: 12px; } .ds-pillar-card h3 { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; color: #ffffff; margin: 0 0 8px; } .ds-pillar-card p { font-size: 13.5px; line-height: 1.6; color: #94a3b8; margin: 0; }"
+    },
+    {
+      "name": "Browser-Chrome Preview Frame",
+      "kind": "custom",
+      "refersTo": "venture-frame",
+      "description": "Signature component: a fake browser window (status dots + mono URL) wrapping each venture screenshot, lifted with Frame Lift shadow.",
+      "html": "<div class=\"ds-venture-frame\"><div class=\"ds-venture-bar\"><span class=\"ds-dot ds-dot--fault\"></span><span class=\"ds-dot ds-dot--signal\"></span><span class=\"ds-dot ds-dot--clear\"></span><span class=\"ds-venture-url\">example.com</span></div><div class=\"ds-venture-body\">Screenshot goes here</div></div>",
+      "css": ".ds-venture-frame { border-radius: 12px; overflow: hidden; background: #111827; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06); } .ds-venture-bar { display: flex; align-items: center; gap: 6px; padding: 11px 14px; background: #111827; border-bottom: 1px solid rgba(255,255,255,0.08); } .ds-dot { width: 9px; height: 9px; border-radius: 50%; } .ds-dot--fault { background: #ef4444; } .ds-dot--signal { background: #f59e0b; } .ds-dot--clear { background: #22c55e; } .ds-venture-url { font-family: 'Fragment Mono', monospace; font-size: 10.5px; color: #94a3b8; margin-left: 10px; } .ds-venture-body { padding: 24px; color: #cbd5e1; font-family: 'Public Sans', sans-serif; font-size: 13px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Shift",
+    "overview": "Maybe LLC's site is a quiet workshop after hours: near-black backgrounds, one cool blue light left on, and the small disciplined details of people who work with their hands as much as their heads. It doesn't perform confidence with scale or spectacle — it earns it with restraint. The diagnostic-shop vocabulary (traffic-light status dots, monospace part-number labels, a fake-browser-chrome preview frame around each venture screenshot) is load-bearing, not decorative: it exists because RepairVector's actual product domain is automotive diagnostics, and the whole company's thesis is \"rational development, evidence over hype.\" This system explicitly rejects the generic SaaS/AI-tool playbook: no gradient-text headlines, no hero-metric-with-sparkline template, no cream/sand \"warm neutral\" body background, no tiny uppercase eyebrow stacked reflexively above every section, no identical icon-card grids, no glassmorphism used for its own sake.",
+    "keyCharacteristics": [
+      "Near-black, low-chroma dark shell — no light mode",
+      "One brand accent (torque blue), used sparingly, never washed out",
+      "Traffic-light status color (amber/red/green) reserved strictly for diagnostic/status meaning, never as general decoration",
+      "Monospace for anything that reads as data: URLs, indices, category tags, timestamps",
+      "Flat surfaces at rest; shadow appears only under floating overlay elements (the preview frame, the verification badge)"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Torque blue is the only saturated brand color. It never competes with a second 'brand' hue.", "section": "colors" },
+      { "name": "The Status-Color Containment Rule", "body": "Amber/red/green never leave the diagnostic-chrome context. They are not repurposed as generic UI success/warning/error colors elsewhere on the page.", "section": "colors" },
+      { "name": "The Mono-Means-Data Rule", "body": "Monospace is reserved for anything that is, or reads as, structured data: URLs, index numbers, category/tag labels, timestamps, the copyright line.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Nothing gets a shadow just for being a card. Shadow is reserved for elements that are structurally, not just decoratively, 'lifted.'", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep torque blue as the only saturated brand hue",
+      "Do reserve monospace for anything data-shaped: URLs, indices, tags, timestamps",
+      "Do keep new cards/chips flat at rest; add a fill tint or hairline border instead of a shadow",
+      "Do keep the browser-chrome preview frame pattern for any new venture/portfolio entry",
+      "Do cap prose measure around 65–75ch"
+    ],
+    "donts": [
+      "Don't introduce gradient text, the hero-metric-with-sparkline template, or a cream/sand/beige body background",
+      "Don't stack a tiny uppercase tracked eyebrow above every section reflexively",
+      "Don't repurpose fault-red / signal-amber / clear-green as generic UI error/warning/success colors outside the diagnostic-chrome context",
+      "Don't add a filled, boxed CTA button",
+      "Don't use border-left/border-right as a colored accent stripe on any card, list item, or callout"
+    ]
+  }
+}

@@ -15,6 +15,29 @@ PR #1 (`content/mockup-import` → `main`) was opened, browser-verified by
 Jim, reviewed by CodeRabbit (lazy-loading + footer contrast fixed; Google
 Fonts self-hosting declined for a follow-up — see `TODO.md`), and merged.
 
+**On branch `feat/impeccable-design-pass` (not yet merged), an `/impeccable`
+design pass added `PRODUCT.md`/`DESIGN.md`/`.impeccable/` (register: brand,
+North Star "The Night Shift"), ran `critique` (31/40, dual-agent, snapshot
+in `.impeccable/critique/`), then implemented its full recommended
+remediation:**
+- Typeset: replaced DM Sans/IBM Plex Sans/IBM Plex Mono (all on the skill's
+  reflex-reject list) with Archivo/Public Sans/Fragment Mono.
+- Audit: added tag chips to Zephyrphoto/RescueRich (previously only
+  RepairVector had tags/flag/badge) and bumped nav-link padding to clear
+  the 44px touch-target minimum.
+- Clarify: added a "See the ventures" hero CTA.
+- Adapt: added a mobile-visible inline "documentation verified" variant
+  (the floating desktop badge disappeared entirely below 900px before).
+- Harden: added a visually-hidden "(opens in new tab)" cue to all 6
+  external links.
+- Self-verified: W3C Nu HTML validator (0 errors/warnings), no browser
+  console errors, keyboard focus states confirmed working. Live-viewport
+  resizing for mobile/tablet screenshots was not reliable in this session's
+  browser-automation environment (`resize_window` didn't change the
+  rendered viewport) — the media-query logic was verified by code review
+  instead; Jim's browser check should still cover real mobile/tablet
+  breakpoints per `verification.md`.
+
 **Hosting is fully live as of 2026-07-03:**
 - GitHub Pages enabled (build source: GitHub Actions, via
   `.github/workflows/deploy.yml`), deploying successfully on every push to
@@ -29,7 +52,10 @@ Fonts self-hosting declined for a follow-up — see `TODO.md`), and merged.
   propagating on GitHub's edge shortly; worth a spot-check next session.
 
 ## Next action
-Next session: confirm HTTP→HTTPS redirect is active
+Push `feat/impeccable-design-pass`, open the PR, and hand Jim the browser
+test checklist (fonts render, hero CTA scrolls to `#ventures`, all three
+venture cards show tags, mobile-width badge/nav/tap-targets). Separately,
+next session: confirm HTTP→HTTPS redirect is active
 (`curl -I http://maybellc.com/` should return a `301` to `https://`), then
 revisit branch protection on `main` now that real content work has landed
 (see `TODO.md` Repo settings).

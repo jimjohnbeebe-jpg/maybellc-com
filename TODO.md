@@ -45,9 +45,11 @@ Tracks placeholder content/assets shipped in the initial scaffold, per the
       this is on; it isn't yet.
 
 ## Performance / privacy
-- [ ] Self-host the three Google Fonts (DM Sans, IBM Plex Sans, IBM Plex
-      Mono) instead of loading from `fonts.googleapis.com`/`fonts.gstatic.com`
-      (`index.html`). Flagged by CodeRabbit on PR #1 — loading from Google's
+- [ ] Self-host the three Google Fonts (Archivo, Public Sans, Fragment
+      Mono — swapped from DM Sans/IBM Plex Sans/IBM Plex Mono during an
+      `/impeccable typeset` pass) instead of loading from
+      `fonts.googleapis.com`/`fonts.gstatic.com` (`index.html`). Flagged by
+      CodeRabbit on PR #1 — loading from Google's
       CDN sends visitor IPs to Google, a privacy/compliance consideration for
       EU traffic. Declined in PR #1's fix-pass as out of scope for a
       review-comment cleanup (needs font files fetched + licensed + hosted

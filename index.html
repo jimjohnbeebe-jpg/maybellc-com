@@ -31,7 +31,7 @@
        every font-family declaration falls back to the system sans stack. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Public+Sans:wght@400;500;600&amp;family=Fragment+Mono&amp;display=swap">
 
   <link rel="stylesheet" href="/assets/css/styles.css">
 
@@ -69,6 +69,10 @@
       <div class="hero__inner">
         <h1 class="hero__title">The discipline of rational development. The strength of modern technology.</h1>
         <p class="hero__lede">We build mission-focused solutions across software, AI, and automotive repair &mdash; and operate a small portfolio of ventures that put those principles to work.</p>
+        <a class="venture__link hero__cta" href="#ventures">
+          See the ventures
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </section>
 
@@ -87,6 +91,10 @@
                 <span class="venture__rule"></span>
                 <span class="venture__category">Automotive &middot; B2B SaaS</span>
                 <span class="venture__flag">Flagship</span>
+                <span class="venture__verified-inline">
+                  <span class="venture__dot venture__dot--clear"></span>
+                  documentation verified
+                </span>
               </div>
               <div class="venture__brand">
                 <img src="/assets/images/logo.webp" alt="" width="256" height="256">
@@ -101,6 +109,7 @@
               <a class="venture__link" href="https://repairvector.com" target="_blank" rel="noopener">
                 Visit RepairVector.com
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span class="sr-only"> (opens in new tab)</span>
               </a>
             </div>
             <div class="venture__preview">
@@ -131,9 +140,15 @@
               </div>
               <h3 class="venture__title">Zephyrphoto</h3>
               <p class="venture__desc">A curated collection of personal photography on a hand-made platform built to house the portfolio &mdash; landscapes, coastlines, and the quiet in between. The craft of software applied to the craft of the image.</p>
+              <ul class="venture__tags">
+                <li>Landscape &amp; Coastal</li>
+                <li>Curated Portfolio</li>
+                <li>Hand-built</li>
+              </ul>
               <a class="venture__link" href="https://zephyrphoto.com" target="_blank" rel="noopener">
                 Visit Zephyrphoto.com
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span class="sr-only"> (opens in new tab)</span>
               </a>
             </div>
             <div class="venture__preview">
@@ -160,9 +175,15 @@
               </div>
               <h3 class="venture__title">RescueRich</h3>
               <p class="venture__desc">A single-page, highly optimized website for a small business. It costs very little to build and almost nothing to host &mdash; yet it conveys a clear mission and message. Proof that lean, disciplined web work still wins.</p>
+              <ul class="venture__tags">
+                <li>Single-page</li>
+                <li>Lean Build</li>
+                <li>Low-cost Hosting</li>
+              </ul>
               <a class="venture__link" href="https://rescuerich.com" target="_blank" rel="noopener">
                 Visit RescueRich.com
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span class="sr-only"> (opens in new tab)</span>
               </a>
             </div>
             <div class="venture__preview">
@@ -219,9 +240,9 @@
         <nav aria-label="Ventures">
           <div class="site-footer__label">Ventures</div>
           <ul class="site-footer__links">
-            <li><a href="https://repairvector.com" target="_blank" rel="noopener">RepairVector.com</a></li>
-            <li><a href="https://zephyrphoto.com" target="_blank" rel="noopener">Zephyrphoto.com</a></li>
-            <li><a href="https://rescuerich.com" target="_blank" rel="noopener">RescueRich.com</a></li>
+            <li><a href="https://repairvector.com" target="_blank" rel="noopener">RepairVector.com<span class="sr-only"> (opens in new tab)</span></a></li>
+            <li><a href="https://zephyrphoto.com" target="_blank" rel="noopener">Zephyrphoto.com<span class="sr-only"> (opens in new tab)</span></a></li>
+            <li><a href="https://rescuerich.com" target="_blank" rel="noopener">RescueRich.com<span class="sr-only"> (opens in new tab)</span></a></li>
           </ul>
         </nav>
         <div class="site-footer__contact">

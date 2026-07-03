@@ -9,3 +9,8 @@ One line per closed decision. Full entries in `DECISIONS.md`.
   (not the full file) and translated the mockup's inline styles into BEM
   classes; added mobile breakpoints and focus states the export lacked;
   corrected brand text to "Maybe LLC".
+- 2026-07-03 — D-04 — Replaced DM Sans/IBM Plex Sans/IBM Plex Mono (all on
+  `impeccable`'s reflex-reject list) with Archivo/Public Sans/Fragment
+  Mono, plus a full `/impeccable critique` remediation pass (venture-card
+  tag consistency, nav tap targets, hero CTA, mobile-visible verified
+  badge, external-link cues).
