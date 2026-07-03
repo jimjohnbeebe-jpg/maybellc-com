@@ -27,10 +27,16 @@ Tracks placeholder content/assets shipped in the initial scaffold, per the
       (see `docs/DECISIONS.md` D-03).
 
 ## Hosting
-- [ ] Enable GitHub Pages in repo settings (source: GitHub Actions, or
-      `main` branch — decide once the workflow in `.github/workflows/` is
-      confirmed working).
-- [ ] Point `maybellc.com` DNS at GitHub Pages.
+- [x] Enable GitHub Pages in repo settings (source: GitHub Actions).
+- [x] Point `maybellc.com` DNS at GitHub Pages — required switching the
+      Cloudflare apex record from proxied (orange cloud) to "DNS only"
+      (grey cloud) so GitHub could verify the domain and issue its own
+      cert; Cloudflare's proxy IPs were masking the real A/AAAA records.
+- [x] GitHub's TLS certificate issued and approved (expires 2026-09-30);
+      `https_enforced` is on.
+- [ ] Spot-check next session that `http://maybellc.com/` actually 301s to
+      `https://` — enforcement was just turned on and hadn't visibly taken
+      effect on GitHub's edge yet as of 2026-07-03.
 
 ## Repo settings
 - [ ] Enable branch protection on `main` (require PR before merge) once real

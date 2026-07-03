@@ -14,3 +14,31 @@ Claude Code received at a real `/root/.claude/uploads/<session>/...` path.
 For future design-import sessions on this repo (or others), ask for a
 direct chat-attached zip/export up front rather than relying on the
 Design UI's "send to code" action.
+
+## 2026-07-03 — Cloudflare proxy blocks GitHub Pages' own cert issuance
+GitHub Pages' automatic Let's Encrypt certificate for a custom domain
+requires DNS to resolve directly to GitHub's own IPs
+(`185.199.108-111.153` / `2606:50c0:8000-8003::153`) so it can verify
+ownership. If the domain's DNS is proxied through Cloudflare ("orange
+cloud"), the apex resolves to Cloudflare's anycast IPs instead — GitHub's
+verification never sees its own IPs and refuses to issue a cert
+(`gh api .../pages` keeps returning `"The certificate does not exist yet"`
+on any `https_enforced=true` attempt, indefinitely, with no error pointing
+at the real cause).
+
+**Fix:** switch the apex (and any subdomain pointed at GitHub Pages) to
+"DNS only" (grey cloud) in Cloudflare. The site keeps serving over HTTPS
+throughout via Cloudflare's own edge cert — no downtime — but GitHub can
+now see its own IPs and issues its cert automatically, typically within
+15 minutes to a couple hours. There is no manual "issue now" API; clearing
+and re-setting the `cname` field via `gh api` did not speed it up.
+
+**Symptom to watch for:** the DNS toggle can take several minutes to
+actually propagate even though the Cloudflare dashboard shows it as
+already changed — `nslookup` against multiple resolvers (8.8.8.8, 1.1.1.1)
+kept returning the *same* Cloudflare IPs for a while after the toggle was
+confirmed set. Don't assume the toggle failed; re-check DNS a few minutes
+later before concluding something's wrong. Also expect a brief HTTP-only
+window right after the DNS switches to GitHub's IPs but before GitHub's
+cert is issued — Cloudflare's cert was terminating HTTPS before, and
+nothing does until GitHub's own cert lands.
