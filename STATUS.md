@@ -71,6 +71,18 @@ Self-verified (gate 1): boot/scene/tilt/power-ons/HUD confirmed in
 Chrome, zero console errors; a tab-throttling bug in the boot typing was
 found and fixed (time-based typing + hard cap) during iteration.
 
+The same PR also carries: a tuning pass (sub-2s boot, 50% subtler grid,
+motes removed, beam 14s/half-bright — Jim's review), an `/impeccable
+polish` pass (power-on armed post-boot, beam core palette-aligned,
+DESIGN.md §7 Motion added), CodeRabbit triage (2 findings: canvas
+pointer-events, wipe/removal desync — both fixed, replies on threads),
+and a launch-quality pass: **fonts self-hosted** (latin woff2 under
+`assets/fonts/`, OFL.txt, preloads; zero third-party requests now —
+TODO.md item closed), tooling references scrubbed from all served files,
+`color-scheme` meta, og:image dimensions/alt, JSON-LD description.
+W3C Nu: 0 errors/0 warnings. All 5 font faces verified loading
+first-party in ~10ms.
+
 ## Next action
 Jim: browser-verify PR #5 against its test checklist, then merge. Also
 still pending from last session: confirm HTTP→HTTPS redirect is active
