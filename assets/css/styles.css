@@ -192,6 +192,7 @@ a {
   z-index: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .hero__inner {
@@ -760,8 +761,10 @@ a {
   }
 }
 
+/* Duration must match WIPE_MS in main.js — the overlay is removed from the
+   DOM on the same clock. */
 .boot--out {
-  animation: boot-out 640ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: boot-out 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes boot-out {

@@ -24,7 +24,11 @@
      self-test, then wipes up to reveal the page. Click or keypress skips.
      ===================================================================== */
 
-  function runBoot(onDone) {
+  // onReveal(played) fires at wipe start (scene + entrance overlap the wipe
+  // deliberately); onCleared fires once the overlay is actually gone, for
+  // one-shot work that must never run behind it.
+  function runBoot(onReveal, onCleared) {
+    var WIPE_MS = 520; // must match the boot-out animation duration in CSS
     var booted = false;
     try {
       booted = sessionStorage.getItem("mllc-booted") === "1";
@@ -32,7 +36,8 @@
       /* storage blocked — boot every load rather than never */
     }
     if (booted || !("animate" in Element.prototype)) {
-      onDone(false);
+      onReveal(false);
+      onCleared();
       return;
     }
     try {
@@ -127,11 +132,12 @@
       overlay.removeEventListener("pointerdown", finish);
       setTimeout(function () {
         overlay.classList.add("boot--out");
+        onReveal(true);
         setTimeout(function () {
           overlay.remove();
           document.documentElement.style.overflow = "";
-        }, 520);
-        onDone(true);
+          onCleared();
+        }, WIPE_MS);
       }, 240);
     }
 
@@ -503,14 +509,18 @@
 
   /* ===== ignition ===== */
 
-  // powerOns arms inside the boot callback: on short viewports the first
-  // frame can cross the observer threshold while the overlay still covers
-  // the page, which would burn its one-shot CRT power-on invisibly.
-  runBoot(function (played) {
-    heroScene();
-    if (played) heroEntrance();
-    powerOns();
-  });
+  // powerOns arms in onCleared: on short viewports the first frame can
+  // cross the observer threshold while the overlay still covers the page,
+  // which would burn its one-shot CRT power-on invisibly.
+  runBoot(
+    function (played) {
+      heroScene();
+      if (played) heroEntrance();
+    },
+    function () {
+      powerOns();
+    }
+  );
   frameTilt();
   hud();
 })();
