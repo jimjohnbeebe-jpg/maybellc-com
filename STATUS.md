@@ -52,9 +52,21 @@ remediation:
   hadn't visibly kicked in yet at last check — expected to finish
   propagating on GitHub's edge shortly; worth a spot-check next session.
 
+PR #4 (`feat/impeccable-overdrive` → `main`) is **open, awaiting Jim's
+browser verification**. An `/impeccable overdrive` motion pass (direction
+"Boot sequence + work lamp", picked by Jim from three proposed options):
+hero boot entrance, per-venture fault→signal→clear dot sweep with badge
+stamp-in, pointer-tracked hero work lamp with lagging glow. CSS/JS only,
+all progressive enhancement, full `prefers-reduced-motion` bail-out.
+Self-verified (gate 1): zero console errors, sweep/lamp/badge visually
+confirmed via browser automation, reduced-motion path confirmed for real
+(the dev machine has it enabled OS-wide). Note for verification: Windows
+"Animation effects" off ⇒ reduced motion ⇒ correctly no animation.
+
 ## Next action
-Next session: confirm HTTP→HTTPS redirect is active
-(`curl -I http://maybellc.com/` should return a `301` to `https://`), then
+Jim: browser-verify PR #4 against its test checklist, then merge. Also
+still pending from last session: confirm HTTP→HTTPS redirect is active
+(`curl -I http://maybellc.com/` should return a `301` to `https://`), and
 revisit branch protection on `main` now that real content work has landed
 (see `TODO.md` Repo settings).
 

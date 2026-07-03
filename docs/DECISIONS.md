@@ -72,3 +72,20 @@ mobile-visible inline "documentation verified" variant (the floating
 desktop badge previously vanished outright below 900px); added a
 visually-hidden "(opens in new tab)" cue to all 6 external links via a new
 `.sr-only` utility class.
+
+## D-05 — Overdrive motion direction: boot sequence + work lamp (2026-07-03)
+**Context:** `/impeccable overdrive index.html` — the page had zero motion
+beyond a 150ms hover transition. Three directions were proposed
+(diagnostic boot sequence; cursor work-lamp hero; CSS scroll-driven scan
+rail), plus a combined option.
+**Decision:** Jim picked the combined **boot sequence + work lamp**: WAAPI
+hero entrance, per-venture fault→signal→clear browser-dot self-test with
+badge stamp-in, and a pointer-tracked hero grid mask with lagging
+torque-blue glow.
+**Why:** The sweep makes the motion carry the brand argument (evidence,
+then verdict) rather than decorate; the lamp extends the "night shift"
+scene literally. The scroll-driven scan rail was rejected for partial
+browser support (no Firefox without a flag).
+**Constraints honored:** progressive enhancement only (no-JS page
+unchanged), full `prefers-reduced-motion` bail-out in both JS and CSS,
+transform/opacity/mask-position only, self-stopping rAF loop.
