@@ -30,3 +30,9 @@ Tracks placeholder content/assets shipped in the initial scaffold, per the
       `main` branch — decide once the workflow in `.github/workflows/` is
       confirmed working).
 - [ ] Point `maybellc.com` DNS at GitHub Pages.
+
+## Repo settings
+- [ ] Enable branch protection on `main` (require PR before merge) once real
+      content work starts — deliberately skipped at bootstrap since the repo
+      was still empty scaffolding. `.claude/rules/git-workflow.md` assumes
+      this is on; it isn't yet.
