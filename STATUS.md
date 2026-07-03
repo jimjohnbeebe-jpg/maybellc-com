@@ -52,19 +52,27 @@ remediation:
   hadn't visibly kicked in yet at last check — expected to finish
   propagating on GitHub's edge shortly; worth a spot-check next session.
 
-PR #4 (`feat/impeccable-overdrive` → `main`) is **open, awaiting Jim's
-browser verification**. An `/impeccable overdrive` motion pass (direction
-"Boot sequence + work lamp", picked by Jim from three proposed options):
-hero boot entrance, per-venture fault→signal→clear dot sweep with badge
-stamp-in, pointer-tracked hero work lamp with lagging glow. CSS/JS only,
-all progressive enhancement, full `prefers-reduced-motion` bail-out.
-Self-verified (gate 1): zero console errors, sweep/lamp/badge visually
-confirmed via browser automation, reduced-motion path confirmed for real
-(the dev machine has it enabled OS-wide). Note for verification: Windows
-"Animation effects" off ⇒ reduced motion ⇒ correctly no animation.
+PR #4 (`feat/impeccable-overdrive` → `main`) was merged by Jim on
+2026-07-03 and deployed — but **rejected in practice**: its motion was
+invisible on his machine (Windows performance preset sets the
+reduced-motion flag, which PR #4's code honored by showing the static
+page) and too subtle even when enabled. Jim's directive: effects must be
+discernible on every machine, no settings dependence, spectacular not
+restrained. See `docs/LESSONS.md` (2026-07-03) and D-06.
+
+PR #5 (`feat/overdrive-spectacular` → `main`) is **open, awaiting Jim's
+browser verification**. Full replacement of the PR #4 motion ("All of it"
+direction, Jim's pick): once-per-session terminal boot takeover, persistent
+"Living Garage" canvas hero (parallax grid drift, 7s scan-beam, dust
+motes, cursor lamp), 3D tilt + glare + CRT power-on + persistent corner
+brackets on venture frames, right-edge HUD scroll telemetry. No
+reduced-motion bail-out (D-06). CSS/JS only; no-JS page unchanged.
+Self-verified (gate 1): boot/scene/tilt/power-ons/HUD confirmed in
+Chrome, zero console errors; a tab-throttling bug in the boot typing was
+found and fixed (time-based typing + hard cap) during iteration.
 
 ## Next action
-Jim: browser-verify PR #4 against its test checklist, then merge. Also
+Jim: browser-verify PR #5 against its test checklist, then merge. Also
 still pending from last session: confirm HTTP→HTTPS redirect is active
 (`curl -I http://maybellc.com/` should return a `301` to `https://`), and
 revisit branch protection on `main` now that real content work has landed
