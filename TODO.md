@@ -5,25 +5,26 @@ Tracks placeholder content/assets shipped in the initial scaffold, per the
 `.claude/rules/architecture.md`.
 
 ## Content
-- [ ] Hero tagline (`index.html` `#top`) — real copy from Jim/mockup.
-- [ ] About section copy (`index.html` `#about`).
-- [ ] Portfolio items (`index.html` `#portfolio`) — real projects, one
-      `<li class="portfolio__item">` per project, replacing the single
-      placeholder entry.
-- [ ] Contact section copy/details (`index.html` `#contact`).
+- [x] Hero tagline (`index.html` `#top`) — real copy from the mockup.
+- [x] About section copy (`index.html` `#about`).
+- [x] Ventures/portfolio items (`index.html` `#ventures`) — RepairVector,
+      Zephyrphoto, RescueRich, from the mockup.
+- [x] Contact — direct `mailto:info@maybellc.com` in nav + footer (this
+      design has no separate `#contact` section).
 
 ## Assets referenced but not yet created
-- [ ] `assets/images/favicon.ico`
-- [ ] `assets/images/apple-touch-icon.png`
-- [ ] `assets/images/icon-192.png`, `assets/images/icon-512.png` (referenced by `site.webmanifest`)
-- [ ] `assets/images/og-cover.jpg` (Open Graph / Twitter Card image, 1200×630)
-- [ ] `assets/images/logo.png` (referenced by the Organization JSON-LD in `index.html`)
-- [ ] Real portfolio thumbnails in `assets/images/portfolio/` (currently one `placeholder.svg`)
+- [x] `assets/images/favicon.ico` — generated from `maybe-logo.png`.
+- [x] `assets/images/apple-touch-icon.png` — generated from `maybe-logo.png`.
+- [x] `assets/images/icon-192.png`, `assets/images/icon-512.png`.
+- [x] `assets/images/og-cover.jpg` — generated (logo + wordmark on brand
+      background). First pass — swap for a custom-designed card if desired.
+- [x] `assets/images/logo.webp` (JSON-LD `Organization.logo`).
+- [x] Real portfolio thumbnails in `assets/images/portfolio/`.
 
 ## Design
-- [ ] Import the Claude Design mockup once Jim links it; replace the
-      placeholder palette/typography in `assets/css/styles.css`
-      (`:root` custom properties) with the mockup's values.
+- [x] Import the Claude Design mockup ("Maybe LLC Landing.dc.html");
+      `assets/css/styles.css` now carries the real palette/typography
+      (see `docs/DECISIONS.md` D-03).
 
 ## Hosting
 - [ ] Enable GitHub Pages in repo settings (source: GitHub Actions, or
