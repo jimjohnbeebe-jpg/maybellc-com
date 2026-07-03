@@ -177,12 +177,34 @@ a {
   background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: 48px 48px;
-  -webkit-mask-image: radial-gradient(circle at 42% 42%, #000 0%, transparent 72%);
-  mask-image: radial-gradient(circle at 42% 42%, #000 0%, transparent 72%);
+  /* --lamp-x/y are driven by main.js (the "work lamp"); the fallbacks keep
+     the exact pre-enhancement mask when JS is off. */
+  -webkit-mask-image: radial-gradient(circle at var(--lamp-x, 42%) var(--lamp-y, 42%), #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at var(--lamp-x, 42%) var(--lamp-y, 42%), #000 0%, transparent 72%);
+}
+
+/* Lagging torque-blue glow that trails the work lamp. Hidden until JS
+   activates the lamp, so the no-JS hero is unchanged. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    460px 340px at var(--glow-x, 42%) var(--glow-y, 42%),
+    rgba(37, 99, 235, 0.13),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+.hero--lamp-on::after {
+  opacity: 1;
 }
 
 .hero__inner {
   position: relative;
+  z-index: 1;
   max-width: 960px;
   margin: 0 auto;
   padding: var(--space-5) var(--space-3) var(--space-4);
@@ -429,6 +451,17 @@ a {
   display: none;
 }
 
+/* Self-test sweep pre-state. .is-pending is applied by main.js only (and
+   only when motion is allowed), so dots and badge stay fully visible
+   without JS. The Web Animations API sweep lights the dots fault -> signal
+   -> clear, then stamps the badge in. */
+.venture__preview.is-pending .venture__browser-bar .venture__dot {
+  opacity: 0.2;
+}
+.venture__preview.is-pending .venture__badge {
+  opacity: 0;
+}
+
 .venture__verified-inline {
   display: inline-flex;
   align-items: center;
@@ -619,6 +652,36 @@ a {
   width: 1px;
   height: 30px;
   background: var(--border-on-dark);
+}
+
+/* ===== motion (progressive enhancement — all of it is gated on classes
+   that only main.js adds, so the no-JS page is fully static and visible) ===== */
+
+/* Boot sequence: the hero's blueprint grid fades up like a shop light
+   warming on. .js-boot is added by main.js only when motion is allowed. */
+.js-boot .hero::before {
+  animation: hero-grid-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-grid-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js-boot .hero::before {
+    animation: none;
+  }
+  .hero::after {
+    transition: none;
+  }
 }
 
 /* ===== 404 ===== */

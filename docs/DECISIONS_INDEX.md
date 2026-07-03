@@ -14,3 +14,6 @@ One line per closed decision. Full entries in `DECISIONS.md`.
   Mono, plus a full `/impeccable critique` remediation pass (venture-card
   tag consistency, nav tap targets, hero CTA, mobile-visible verified
   badge, external-link cues).
+- 2026-07-03 — D-05 — Overdrive motion: boot sequence + venture dot sweep
+  + hero work lamp (Jim's pick of 3 options); scroll-driven rail rejected
+  for browser support. Progressive enhancement, reduced-motion bail-out.
