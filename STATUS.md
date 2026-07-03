@@ -60,16 +60,38 @@ page) and too subtle even when enabled. Jim's directive: effects must be
 discernible on every machine, no settings dependence, spectacular not
 restrained. See `docs/LESSONS.md` (2026-07-03) and D-06.
 
-PR #5 (`feat/overdrive-spectacular` → `main`) is **open, awaiting Jim's
-browser verification**. Full replacement of the PR #4 motion ("All of it"
-direction, Jim's pick): once-per-session terminal boot takeover, persistent
-"Living Garage" canvas hero (parallax grid drift, 7s scan-beam, dust
-motes, cursor lamp), 3D tilt + glare + CRT power-on + persistent corner
-brackets on venture frames, right-edge HUD scroll telemetry. No
-reduced-motion bail-out (D-06). CSS/JS only; no-JS page unchanged.
+PR #5 (`feat/overdrive-spectacular` → `main`) was **merged by Jim
+2026-07-03 ~13:47 UTC** at commit `4a4d065` (CodeRabbit triage). Full
+replacement of the PR #4 motion ("All of it" direction, Jim's pick):
+once-per-session terminal boot takeover, persistent "Living Garage"
+canvas hero (parallax grid drift, 14s scan-beam, cursor lamp), 3D tilt +
+glare + CRT power-on + persistent corner brackets on venture frames,
+right-edge HUD scroll telemetry. No reduced-motion bail-out (D-06).
+CSS/JS only; no-JS page unchanged.
+
+**Merge/deploy incident (2026-07-03):** the merge's Pages deploy failed
+with a transient GitHub-side error ("Deployment failed, try again
+later"), leaving the live site serving the stale PR #4 build — which is
+static on machines with the Windows reduced-motion flag, so it looked
+like "all effects broke." Re-run triggered. Separately, the merge landed
+while two just-pushed commits (`f206b57` launch-quality pass, `5989260`
+docs) were on the branch — they missed the merge and were re-raised as a
+follow-up PR (same branch, new PR) for Jim to merge.
 Self-verified (gate 1): boot/scene/tilt/power-ons/HUD confirmed in
 Chrome, zero console errors; a tab-throttling bug in the boot typing was
 found and fixed (time-based typing + hard cap) during iteration.
+
+The same PR also carries: a tuning pass (sub-2s boot, 50% subtler grid,
+motes removed, beam 14s/half-bright — Jim's review), an `/impeccable
+polish` pass (power-on armed post-boot, beam core palette-aligned,
+DESIGN.md §7 Motion added), CodeRabbit triage (2 findings: canvas
+pointer-events, wipe/removal desync — both fixed, replies on threads),
+and a launch-quality pass: **fonts self-hosted** (latin woff2 under
+`assets/fonts/`, OFL.txt, preloads; zero third-party requests now —
+TODO.md item closed), tooling references scrubbed from all served files,
+`color-scheme` meta, og:image dimensions/alt, JSON-LD description.
+W3C Nu: 0 errors/0 warnings. All 5 font faces verified loading
+first-party in ~10ms.
 
 ## Next action
 Jim: browser-verify PR #5 against its test checklist, then merge. Also

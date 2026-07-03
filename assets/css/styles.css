@@ -1,6 +1,29 @@
-/* Maybe LLC — base styles.
-   Tokens are a focused subset of the Claude Design export's design
-   system (colors_and_type.css), scoped to what this one page needs. */
+/* Maybe LLC — maybellc.com */
+
+/* Self-hosted fonts (SIL OFL 1.1 — see /assets/fonts/OFL.txt).
+   Latin subset, woff2 only. Archivo ships as one variable file
+   covering the 500–700 weights this page uses. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/assets/fonts/archivo-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/public-sans-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fragment Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/fragment-mono-latin.woff2") format("woff2");
+}
 
 :root {
   /* type families */
@@ -835,7 +858,7 @@ a {
   color: var(--torque-400);
 }
 
-/* ===== breakpoints (mobile-first — the export defined desktop only) ===== */
+/* ===== breakpoints (mobile-first) ===== */
 
 @media (min-width: 640px) {
   .hero__title {
