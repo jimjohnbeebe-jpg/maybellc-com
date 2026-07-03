@@ -73,13 +73,13 @@
     // Time-based typing: progress derives from elapsed wall-clock time, so
     // throttled timers (background/occluded tabs) slow the tick rate but
     // never stretch the total duration. A hard cap force-finishes anyway.
-    var CHAR_MS = 12;
-    var LINE_PAUSE = 120;
+    var CHAR_MS = 6;
+    var LINE_PAUSE = 55;
     var finished = false;
     var timer = null;
 
     var schedule = [];
-    var acc = 200; // lead-in
+    var acc = 100; // lead-in
     LINES.forEach(function (line) {
       var start = acc;
       acc += line.text.length * CHAR_MS + LINE_PAUSE;
@@ -130,9 +130,9 @@
         setTimeout(function () {
           overlay.remove();
           document.documentElement.style.overflow = "";
-        }, 660);
+        }, 520);
         onDone(true);
-      }, 420);
+      }, 240);
     }
 
     function tick() {
@@ -204,27 +204,14 @@
     window.addEventListener("resize", resize);
 
     var LAYERS = [
-      { gap: 112, alpha: 0.055, depth: 30, drift: 6.5 },
-      { gap: 56, alpha: 0.04, depth: 16, drift: 3.5 },
-      { gap: 28, alpha: 0.022, depth: 7, drift: 1.8 }
+      { gap: 112, alpha: 0.028, depth: 30, drift: 6.5 },
+      { gap: 56, alpha: 0.02, depth: 16, drift: 3.5 },
+      { gap: 28, alpha: 0.011, depth: 7, drift: 1.8 }
     ];
 
-    var MOTES = [];
-    for (var i = 0; i < 70; i++) {
-      MOTES.push({
-        x: Math.random(),
-        y: Math.random(),
-        r: 0.6 + Math.random() * 1.4,
-        vx: (Math.random() - 0.5) * 7,
-        vy: -3 - Math.random() * 5,
-        a: 0.06 + Math.random() * 0.16
-      });
-    }
-
     var pointer = { x: 0.5, y: 0.45, tx: 0.5, ty: 0.45, s: 0, ts: 0 };
-    var BEAM_PERIOD = 7000;
+    var BEAM_PERIOD = 14000;
     var BEAM_SWEEP = 1700;
-    var last = 0;
     var rafId = null;
     var running = false;
 
@@ -242,8 +229,6 @@
 
     function frame(now) {
       if (!running) return;
-      var dt = Math.min(48, now - last) / 1000;
-      last = now;
 
       pointer.x += (pointer.tx - pointer.x) * 0.08;
       pointer.y += (pointer.ty - pointer.y) * 0.08;
@@ -275,19 +260,18 @@
 
       // periodic diagnostic scan-beam
       var phase = (now % BEAM_PERIOD) / BEAM_SWEEP;
-      var beamX = -1;
       if (phase <= 1) {
-        beamX = (-0.18 + phase * 1.36) * w;
+        var beamX = (-0.18 + phase * 1.36) * w;
         var half = w * 0.09;
         var g = ctx.createLinearGradient(beamX - half, 0, beamX + half, 0);
         g.addColorStop(0, "rgba(37, 99, 235, 0)");
-        g.addColorStop(0.5, "rgba(96, 165, 250, 0.14)");
+        g.addColorStop(0.5, "rgba(96, 165, 250, 0.07)");
         g.addColorStop(1, "rgba(37, 99, 235, 0)");
         ctx.fillStyle = g;
         ctx.fillRect(beamX - half, 0, half * 2, h);
         var core = ctx.createLinearGradient(beamX - 6, 0, beamX + 6, 0);
         core.addColorStop(0, "rgba(147, 197, 253, 0)");
-        core.addColorStop(0.5, "rgba(147, 197, 253, 0.22)");
+        core.addColorStop(0.5, "rgba(147, 197, 253, 0.11)");
         core.addColorStop(1, "rgba(147, 197, 253, 0)");
         ctx.fillStyle = core;
         ctx.fillRect(beamX - 6, 0, 12, h);
@@ -304,31 +288,6 @@
         ctx.fillRect(cx - 340, cy - 340, 680, 680);
       }
 
-      // dust motes — brighter inside the beam or near the lamp
-      MOTES.forEach(function (m) {
-        m.x += (m.vx * dt) / w;
-        m.y += (m.vy * dt) / h;
-        if (m.y < -0.02) {
-          m.y = 1.02;
-          m.x = Math.random();
-        }
-        if (m.x < -0.02) m.x = 1.02;
-        if (m.x > 1.02) m.x = -0.02;
-        var mx = m.x * w;
-        var my = m.y * h;
-        var a = m.a;
-        if (beamX >= 0 && Math.abs(mx - beamX) < w * 0.09) a = Math.min(0.85, a * 4.5);
-        if (pointer.s > 0.01) {
-          var dx = mx - pointer.x * w;
-          var dy = my - pointer.y * h;
-          if (dx * dx + dy * dy < 340 * 340) a = Math.min(0.85, a * (2 + 2 * pointer.s));
-        }
-        ctx.fillStyle = "rgba(191, 219, 254, " + a + ")";
-        ctx.beginPath();
-        ctx.arc(mx, my, m.r, 0, 6.2832);
-        ctx.fill();
-      });
-
       ctx.globalCompositeOperation = "source-over";
       rafId = requestAnimationFrame(frame);
     }
@@ -336,7 +295,6 @@
     function start() {
       if (running) return;
       running = true;
-      last = performance.now();
       rafId = requestAnimationFrame(frame);
     }
     function stop() {
