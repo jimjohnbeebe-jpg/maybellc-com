@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 1000" role="img" aria-label="Flag of the United States">
+  <!-- Geometry per Executive Order 10834; colors per the U.S. flag official digital palette -->
+  <rect width="1900" height="1000" fill="#B31942"/>
+  <rect y="76.92" width="1900" height="76.92" fill="#FFFFFF"/>
+  <rect y="230.77" width="1900" height="76.92" fill="#FFFFFF"/>
+  <rect y="384.62" width="1900" height="76.92" fill="#FFFFFF"/>
+  <rect y="538.46" width="1900" height="76.92" fill="#FFFFFF"/>
+  <rect y="692.31" width="1900" height="76.92" fill="#FFFFFF"/>
+  <rect y="846.15" width="1900" height="76.92" fill="#FFFFFF"/>
+  <rect width="760" height="538.46" fill="#0A3161"/>
+  <g fill="#FFFFFF">
+    <path id="s" transform="translate(63.33,53.85)" d="M0,-30.8 L6.92,-9.52 L29.29,-9.52 L11.19,3.64 L18.1,24.92 L0,11.76 L-18.1,24.92 L-11.19,3.64 L-29.29,-9.52 L-6.92,-9.52 Z"/>
+    <use href="#s" x="126.67" y="0"/>
+    <use href="#s" x="253.33" y="0"/>
+    <use href="#s" x="380" y="0"/>
+    <use href="#s" x="506.67" y="0"/>
+    <use href="#s" x="633.33" y="0"/>
+    <use href="#s" x="63.33" y="53.85"/>
+    <use href="#s" x="190" y="53.85"/>
+    <use href="#s" x="316.67" y="53.85"/>
+    <use href="#s" x="443.33" y="53.85"/>
+    <use href="#s" x="570" y="53.85"/>
+    <use href="#s" x="0" y="107.69"/>
+    <use href="#s" x="126.67" y="107.69"/>
+    <use href="#s" x="253.33" y="107.69"/>
+    <use href="#s" x="380" y="107.69"/>
+    <use href="#s" x="506.67" y="107.69"/>
+    <use href="#s" x="633.33" y="107.69"/>
+    <use href="#s" x="63.33" y="161.54"/>
+    <use href="#s" x="190" y="161.54"/>
+    <use href="#s" x="316.67" y="161.54"/>
+    <use href="#s" x="443.33" y="161.54"/>
+    <use href="#s" x="570" y="161.54"/>
+    <use href="#s" x="0" y="215.38"/>
+    <use href="#s" x="126.67" y="215.38"/>
+    <use href="#s" x="253.33" y="215.38"/>
+    <use href="#s" x="380" y="215.38"/>
+    <use href="#s" x="506.67" y="215.38"/>
+    <use href="#s" x="633.33" y="215.38"/>
+    <use href="#s" x="63.33" y="269.23"/>
+    <use href="#s" x="190" y="269.23"/>
+    <use href="#s" x="316.67" y="269.23"/>
+    <use href="#s" x="443.33" y="269.23"/>
+    <use href="#s" x="570" y="269.23"/>
+    <use href="#s" x="0" y="323.08"/>
+    <use href="#s" x="126.67" y="323.08"/>
+    <use href="#s" x="253.33" y="323.08"/>
+    <use href="#s" x="380" y="323.08"/>
+    <use href="#s" x="506.67" y="323.08"/>
+    <use href="#s" x="633.33" y="323.08"/>
+    <use href="#s" x="63.33" y="376.92"/>
+    <use href="#s" x="190" y="376.92"/>
+    <use href="#s" x="316.67" y="376.92"/>
+    <use href="#s" x="443.33" y="376.92"/>
+    <use href="#s" x="570" y="376.92"/>
+    <use href="#s" x="0" y="430.77"/>
+    <use href="#s" x="126.67" y="430.77"/>
+    <use href="#s" x="253.33" y="430.77"/>
+    <use href="#s" x="380" y="430.77"/>
+    <use href="#s" x="506.67" y="430.77"/>
+    <use href="#s" x="633.33" y="430.77"/>
+  </g>
+</svg>
