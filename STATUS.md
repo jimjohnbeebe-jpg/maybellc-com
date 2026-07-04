@@ -101,8 +101,8 @@ predates this STATUS entry but was never recorded here. Jim is copying
 this pattern (plus backlinks to this page) to the other MaybeLLC.com
 sites via a separate per-project prompt.
 
-PR #8 (`feat/footer-us-flag` → `main`) is **open, awaiting Jim's
-browser verification**: adds a US flag to the veteran badge row, left
+PR #8 (`feat/footer-us-flag` → `main`) was **merged by Jim 2026-07-03,
+deployed, and browser-tested**: adds a US flag to the veteran badge row, left
 of the USMC/USAF logos. The flag is a self-authored exact-spec SVG
 (`assets/images/veteran/us-flag.svg`, EO 10834 geometry, official Old
 Glory digital colors, ~3 KB) — SVG over webp because a flat-color flag
@@ -111,17 +111,23 @@ is vector's ideal case; no CSS change (the existing
 0 errors/0 warnings on both `index.html` and the SVG, local render
 check of the footer passed.
 
-## Project state: dormant, re-opened 2026-07-03 for footer flag PR
-The site is live and verified as of 2026-07-03. Jim closed the project
-"for now — will re-open if needed," then re-opened it same day for the
-footer US-flag addition (PR #8). Deployment platform and process are
-documented in `README.md` (Deployment section).
+## Project state: COMPLETE (dormant)
+The site is live, verified, and feature-complete as of 2026-07-03,
+including the footer US flag (PR #8, merged/deployed/tested same day).
+Deployment platform and process are documented in `README.md`
+(Deployment section).
+
+Jim is rolling the veteran footer pattern out to the other venture
+sites via a per-project directive (drafted 2026-07-03, stored in his
+Obsidian vault): each site copies the three images from this repo's
+`assets/images/veteran/` and adds a crawlable backlink to
+https://maybellc.com/ .
 
 ## Next action
-Jim: browser-verify and merge PR #8 (footer US flag). Then dormant
-again; the leftover niceties live in `TODO.md` (branch protection
-revisit, HTTP→HTTPS redirect spot-check, deploy-failure notification
-idea).
+None — project dormant. If re-opened, run the session-start sequence
+(STATUS → rules → DECISIONS_INDEX) as usual; the leftover niceties live
+in `TODO.md` (branch protection revisit, HTTP→HTTPS redirect spot-check,
+deploy-failure notification idea).
 
 ## Open questions
 - Branch protection on `main` still deliberately off per `TODO.md` — revisit
